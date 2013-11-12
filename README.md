@@ -10,7 +10,7 @@
 </tr>
 <tr>
 <td>Description</td>
-<td>Determines if a genome is male (GS144)</td>
+<td>Determines if a genome is boilerplate (gs144)</td>
 </tr>
 <tr>
 <td>Node Version</td>
@@ -27,10 +27,10 @@ This genoset is to be used with genomejs JSON. See the [dna2json](https://github
 This module simply exports a GQL query. Check out the [GQL page for more information](https://github.com/genomejs/gql)
 
 
-This sample is just using the GQL streaming interface to figure out if a genome is a male or not.
+This sample is just using the GQL streaming interface to figure out if a genome is a boilerplate or not.
 
 ```javascript
-var male = require('genoset-boilerplate');
+var boilerplate = require('genoset-boilerplate');
 var fs = require('fs');
 var path = require('path');
 var es = require('event-stream');
@@ -38,7 +38,7 @@ var JSONStream = require('JSONStream');
 
 var jsonStream = fs.createReadStream(path.join(__dirname, "dna.json"));
 
-var query = male();
+var query = boilerplate();
 var genoStream = query.stream();
 
 jsonStream
@@ -51,7 +51,7 @@ genoStream.on('data', function(snp){
 });
 
 genoStream.on('end', function(){
-  console.log("There are", query.matches().length, "matches for genoset 144");
+  console.log("There are", query.matches().length, "matches for gs144");
   console.log("There is a", query.percentage(), "percent chance that genoset matches");
 });
 ```
